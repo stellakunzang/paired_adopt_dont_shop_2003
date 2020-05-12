@@ -17,6 +17,6 @@ Rails.application.routes.draw do
   get '/pets/:id/edit', to: 'pets#edit'
   patch '/pets/:id', to: 'pets#update'
   delete '/pets/:id', to: 'pets#destroy'
-end
 
-#play with order to see if this fixes the problem with update
+  get '/shelters/:shelter_id/reviews/new', to: 'shelter_reviews#new'
+end
