@@ -35,7 +35,7 @@ RSpec.describe "shelter show page" do
     expect(current_path).to eq("/shelters/#{shelter_1.id}/pets")
   end
 
-  it "can see a list of reviews for that shelter" do
+  xit "can see a list of reviews for that shelter" do
     shelter_1 = Shelter.create(name: "Happy Puppies", address: "55 Street St", city: "Danger Mountain", state: "UT", zip: "80304")
     review_1 = ShelterReview.create(title: "What a great place!", rating: "5", content: "We got our new puppy from Happy Puppies and they totally lived up to their name.", image: "image.jpeg")
     review_2 = ShelterReview.create(title: "Puppy Time!", rating: "4", content: "Happy place, but could be cleaner.")
@@ -54,6 +54,15 @@ RSpec.describe "shelter show page" do
       expect(page).to have_content(review_2.content)
       expect(page).to have_no_content(review_2.image)
     end
+  end
 
+  xit "can navigate to page to create new review" do
+    shelter_1 = Shelter.create(name: "Happy Puppies", address: "55 Street St", city: "Danger Mountain", state: "UT", zip: "80304")
+
+    visit "/shelters/#{shelter_1.id}"
+
+    click_link "Add Review"
+
+    expect(current_path).to eq("/shelters/#{shelter_1.id}/reviews/new")
   end
 end
