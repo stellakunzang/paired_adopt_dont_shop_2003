@@ -1,0 +1,16 @@
+<h1>Pets</h1>
+<section class="index">
+<% @pets.each do |pet| %>
+  <div class="item">
+    <img src= <%= pet.image %> style="width:75%">
+    <div class="header"><a href="/pets/<%= pet.id %>"><%= pet.name %></a></div>
+    <p><%= "Age: #{pet.approximate_age}" %></p>
+    <p><%= "Sex: #{pet.sex}" %></p>
+    <div class="links">
+      Current Shelter: <a href="/shelters/<%= pet.shelter.id %>"><%= pet.shelter.name %></a>
+      <p><a href="/pets/<%= pet.id %>/edit">Edit Pet Information</a>
+      <br><a href="/pets/<%= pet.id %>" data-method="DELETE">Delete <%= pet.name %></a></br>
+    </div>
+  </div>
+<% end %>
+</section>

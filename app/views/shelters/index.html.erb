@@ -1,0 +1,16 @@
+<h1>Shelters</h1>
+<section class="index">
+<% @shelters.each do |shelter| %>
+  <div class="item">
+    <div class="header"><a href="/shelters/<%= shelter.id %>"><%= shelter.name %></a></div>
+    <p><%= shelter.address %></p>
+    <p><%= shelter.city %>, <%= shelter.state %> <%= shelter.zip %></p><br />
+    <div class = "links">
+      <a href="/shelters/<%= shelter.id %>/edit">Edit <%= shelter.name %> Information</a>
+      <br><a href="/shelters/<%= shelter.id %>" data-method="DELETE">Delete <%= shelter.name %></a></br>
+    </div>
+  </div>
+<% end %>
+</ section>
+<br><a href="/shelters/new">New Shelter</a></br>
+<br>
