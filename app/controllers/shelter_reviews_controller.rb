@@ -5,7 +5,7 @@ class ShelterReviewsController < ApplicationController
 
   def create
     ShelterReview.create(shelter_review_params)
-    redirect_to("/shelters#{params[:shelter_id]}")
+    redirect_to("/shelters/#{params[:shelter_id]}")
   end
 
   private
