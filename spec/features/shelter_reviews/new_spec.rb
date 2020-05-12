@@ -16,7 +16,7 @@ RSpec.describe "new shelter review page" do
     expect(current_path).to eq("/shelters/#{shelter_1.id}")
 
     expect(page).to have_content("What a great place!")
-    expect(page).to have_content("Rating: 5")
+    expect(page).to have_content("5")
     expect(page).to have_content("This is a Review")
     expect(page).to have_css("img[src*='image.jpeg']")
   end
@@ -35,7 +35,7 @@ RSpec.describe "new shelter review page" do
     expect(current_path).to eq("/shelters/#{shelter_1.id}")
 
     expect(page).to have_content("What a great place!")
-    expect(page).to have_content("Rating: 4")
+    expect(page).to have_content("4")
     expect(page).to have_content("This is a Review")
   end
 end
