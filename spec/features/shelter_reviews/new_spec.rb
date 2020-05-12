@@ -9,7 +9,7 @@ RSpec.describe "new shelter review page" do
     fill_in :title, with: "What a great place!"
     select "5", from: :rating
     fill_in :content, with: "This is a Review"
-    fill_in :title, with: "image.jpeg"
+    fill_in :image, with: "image.jpeg"
 
     click_button "Submit Review"
 
