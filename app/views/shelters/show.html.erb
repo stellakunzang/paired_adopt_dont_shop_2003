@@ -2,18 +2,21 @@
 <h3><%= @shelter.name %></h3>
 <p><%= @shelter.address %></p>
 <p><%= @shelter.city %>, <%= @shelter.state %> <%= @shelter.zip %></p>
+<br>
 <h2>Reviews</h2>
 <section class="index">
 <%= @shelter.shelter_reviews.each do |review| %>
-  <div class="item">
-  <p><%= review.title %></p>
-  <p><%= review.rating %></p>
-  <p><%= review.content %></p>
-  <img src=<%= review.image %> style = "width:100%">
-  </div>
+    <div class="item">
+    <h4>Title: <%= review.title %></h4>
+    <p>Rating: <%= review.rating %></p>
+    <p>Description: <%= review.content %></p>
+    <img src=<%= review.image %> style = "width:100%">
+    </div>
 <% end %>
+<!--When I look at the output on the website, it prints the reviews, followed by an array of the reviews in the form of active record objects-->
 </section>
 <div class = "links">
+<br><a href="/shelters/<%= @shelter.id %>/reviews/new">Add Review</a></br>
 <br><a href="/shelters/<%= @shelter.id %>/pets">View Pets</a></br>
 <br><a href="/shelters/<%= @shelter.id %>/edit">Update Shelter</a></br>
 <br><a href="/shelters/<%= @shelter.id %>" data-method="DELETE">Delete Shelter</a></br>
