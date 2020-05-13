@@ -37,23 +37,25 @@ RSpec.describe "shelter show page" do
 
   it "can see a list of reviews for that shelter" do
     shelter_1 = Shelter.create(name: "Happy Puppies", address: "55 Street St", city: "Danger Mountain", state: "UT", zip: "80304")
+
     review_1 = ShelterReview.create!(title: "What a great place!", rating: "5", content: "We got our new puppy from Happy Puppies and they totally lived up to their name.", image: "image.jpeg", shelter_id: shelter_1.id)
+
     review_2 = ShelterReview.create!(title: "Puppy Time!", rating: "4", content: "Happy place, but could be cleaner.", shelter_id: shelter_1.id)
     visit "/shelters/#{shelter_1.id}"
 
-    # within "#review-#{review_1.id}" do
+    within ".review-#{review_1.id}" do
       expect(page).to have_content(review_1.title)
       expect(page).to have_content(review_1.rating)
       expect(page).to have_content(review_1.content)
-      expect(page).to have_content(review_1.image)
-    # end
+      expect(page).to have_css("img[src*='image.jpeg']")
+    end
 
-    # within("#{review_2.id}") do
+    within ".review-#{review_2.id}" do
       expect(page).to have_content(review_2.title)
       expect(page).to have_content(review_2.rating)
       expect(page).to have_content(review_2.content)
-      # expect(page).to have_no_content(review_2.image)
-    # end
+      # expect(page).to_not have_css("img[src*='image.jpeg']")
+    end
   end
 
   it "can navigate to page to create new review" do
@@ -64,5 +66,9 @@ RSpec.describe "shelter show page" do
     click_link "Add Review"
 
     expect(current_path).to eq("/shelters/#{shelter_1.id}/reviews/new")
+  end
+
+  it "can navigate to page to edit each shelter review" do
+
   end
 end
