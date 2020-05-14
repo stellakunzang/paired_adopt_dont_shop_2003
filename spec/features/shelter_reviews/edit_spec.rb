@@ -8,10 +8,9 @@ RSpec.describe "shelter review edit page" do
 
     visit "shelters/#{shelter_1.id}/reviews/#{review_1.id}/edit"
 
-    expect(page).to have_content("Title:")
+    expect(page).to have_content(review_1.title)
     expect(page).to have_content("Rating:")
     expect(page).to have_content("Content:")
-    # expect page to have review_1.title etc.
 
     fill_in :title, with: "Cool dudes"
 

@@ -2,13 +2,13 @@
 <section class="form">
   <%= form_tag("/shelters/#{@shelter_id}/reviews/#{@review.id}", method: "patch") do %>
     <%= label_tag(:title, "Title: ") %>
-    <%= text_field_tag(:title, @review.title) %><br />
+    <%= text_field_tag(:title, value = @review.title) %><br />
     <%= label_tag(:rating, "Rating: ") %>
     <%= select_tag(:rating, options_for_select(["1", "2", "3", "4", "5"])) %><br />
     <%= label_tag(:content, "Content: ") %>
-    <%= text_field_tag(:content, @review.content) %><br />
+    <%= text_field_tag(:content, value = @review.content) %><br />
     <%= label_tag(:image, "Image: ") %>
-    <%= text_field_tag(:image, @review.image) %><br />
+    <%= text_field_tag(:image, value = @review.image) %><br />
     <br>
     <%= submit_tag("Update Review") %>
   <% end %>

@@ -3,6 +3,7 @@
 <section class="index">
 <% @pets.each do |pet| %>
   <div class="item">
+    <%= image_tag pet.image %>
     <img src= <%= pet.image %> style="width:75%">
     <div class="header"><a href="/pets/<%= pet.id %>"><%= pet.name %></a></div><br>
     <p><%= "Description: #{pet.description}" %></p>
