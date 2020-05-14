@@ -69,6 +69,16 @@ RSpec.describe "shelter show page" do
   end
 
   it "can navigate to page to edit each shelter review" do
+    shelter_1 = Shelter.create(name: "Happy Puppies", address: "55 Street St", city: "Danger Mountain", state: "UT", zip: "80304")
 
+    review_1 = ShelterReview.create!(title: "What a great place!", rating: "5", content: "We got our new puppy from Happy Puppies and they totally lived up to their name.", image: "image.jpeg", shelter_id: shelter_1.id)
+
+    visit "/shelters/#{shelter_1.id}"
+
+    within ".review-#{review_1.id}" do
+      click_link "Edit Review"
+    end
+
+    expect(current_path).to eq("/#{review_1.id}/edit")
   end
 end
