@@ -15,11 +15,16 @@
             <ul class="nav pull-right">
               <li><%= link_to "Shelter Index", "/shelters" %></li>
               <li><%= link_to "Pet Index", "/pets" %></li>
-              <li><%= "Favorite Pets: 0" %></li>
+              <li>Favorite Pets: <%= favorites.total_count %></li>
             </ul>
           </nav>
       </div>
     </header>
+    <% flash.each do |type, message| %>
+      <section class=<%= type %>>
+        <p><%= message %></p>
+      </section>
+    <% end %>
     <%= yield %>
   </body>
 </html>
