@@ -12,8 +12,9 @@
     <p>Rating: <%= review.rating %></p>
     <p>Description: <%= review.content %></p>
     <img src=<%= review.image %> style = "width:100%">
+    <br><a href="/<%= review.id %>/edit">Edit Review</a></br>
     </div>
-  </section>  
+  </section>
 <% end %>
 <!--When I look at the output on the website, it prints the reviews, followed by an array of the reviews in the form of active record objects-->
 </section>

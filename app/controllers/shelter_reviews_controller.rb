@@ -13,6 +13,9 @@ class ShelterReviewsController < ApplicationController
     end
   end
 
+  def edit
+  end 
+
   private
 
   def shelter_review_params
