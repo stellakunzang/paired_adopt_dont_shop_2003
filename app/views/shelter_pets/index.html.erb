@@ -3,8 +3,8 @@
 <section class="index">
 <% @pets.each do |pet| %>
   <div class="item">
-    <%= image_tag "#{pet.image}", style: "width: 75%" %>
-    <div class="header"><%= link_to "#{pet.name}", "/pets/<%= pet.id" %></div><br>
+    <img src= <%= pet.image %> style="width:75%">
+    <div class="header"><%= link_to "#{pet.name}", "/pets/#{pet.id}" %></div><br>
     <p><%= "Description: #{pet.description}" %></p>
     <p><%= "Age: #{pet.approximate_age}" %></p>
     <p><%= "Sex: #{pet.sex}" %></p>
