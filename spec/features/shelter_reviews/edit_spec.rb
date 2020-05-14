@@ -29,13 +29,13 @@ RSpec.describe "shelter review edit page" do
 
     review_1 = ShelterReview.create!(title: "What a great place!", rating: "5", content: "We got our new puppy from Happy Puppies and they totally lived up to their name.", image: "image.jpeg", shelter_id: shelter_1.id)
 
-    visit "shelters/#{shelter_1.id}/reviews/#{review_1.id}/edit"
+    visit "/shelters/#{shelter_1.id}/reviews/#{review_1.id}/edit"
 
     fill_in :title, with: ""
 
     click_on "Update Review"
 
-    expect(current_path).to eq("shelters/#{shelter_1.id}/reviews/#{review_1.id}/edit")
+    expect(current_path).to eq("/shelters/#{shelter_1.id}/reviews/#{review_1.id}/edit")
 
     expect(page).to have_content("In order to edit a review, you must enter a title, rating, and description.")
   end

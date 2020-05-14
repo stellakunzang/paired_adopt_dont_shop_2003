@@ -81,4 +81,21 @@ RSpec.describe "shelter show page" do
 
     expect(current_path).to eq("/shelters/#{shelter_1.id}/reviews/#{review_1.id}/edit")
   end
+
+  it "can delete reviews" do
+    shelter_1 = Shelter.create(name: "Happy Puppies", address: "55 Street St", city: "Danger Mountain", state: "UT", zip: "80304")
+
+    review_1 = ShelterReview.create!(title: "What a great place!", rating: "5", content: "We got our new puppy from Happy Puppies and they totally lived up to their name.", image: "image.jpeg", shelter_id: shelter_1.id)
+
+    visit "/shelters/#{shelter_1.id}"
+
+    within ".review-#{review_1.id}" do
+      click_link "Delete Review"
+    end
+
+    expect(current_path).to eq("/shelters/#{shelter_1.id}")
+
+    expect(page).to have_no_content("What a great place!")
+    expect(page).to have_no_content("We got our new puppy from Happy Puppies and they totally lived up to their name.")
+  end
 end
