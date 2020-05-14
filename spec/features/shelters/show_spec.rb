@@ -54,7 +54,7 @@ RSpec.describe "shelter show page" do
       expect(page).to have_content(review_2.title)
       expect(page).to have_content(review_2.rating)
       expect(page).to have_content(review_2.content)
-      # expect(page).to_not have_css("img[src*='image.jpeg']")
+      expect(page).to_not have_css("img[src*='image.jpeg']")
     end
   end
 

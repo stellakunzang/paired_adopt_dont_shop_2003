@@ -12,7 +12,7 @@
     <h4><%= "Title: #{review.title}" %></h4>
     <p><%= "Rating: #{review.rating}" %></p>
     <p><%= "Description: #{review.content}" %></p>
-    <%= image_tag review.image, style: "width: 75%"%>
+    <%= image_tag "#{review.image}", style: "width: 75%" %>
     <br><%= link_to "Edit Review", "/shelters/#{@shelter.id}/reviews/#{review.id}/edit" %>
     <br><%= link_to "Delete Reviews", "/shelters/#{@shelter.id}/reviews/#{review.id}", method: :delete %></br>
     </div>
@@ -21,8 +21,8 @@
 </section>
 
 <div class = "links">
-  <%= link_to "Add Review", "/shelters/#{shelter.id}/reviews/new" %>
-  <%= link_to "View Pets", "/shelters/#{shelter.id}" %>
-  <%= link_to "Update Shelter", "/shelters/#{shelter.id}" %>
-  <%= link_to "Delete Shelter", "/shelters/#{shelter.id}", method: :delete %>
+  <br><%= link_to "Add Review", "/shelters/#{@shelter.id}/reviews/new" %></br>
+  <br><%= link_to "View Pets", "/shelters/#{@shelter.id}/pets" %></br>
+  <br><%= link_to "Update Shelter", "/shelters/#{@shelter.id}/edit" %></br>
+  <br><%= link_to "Delete Shelter", "/shelters/#{@shelter.id}", method: :delete %></br>
 </div>
