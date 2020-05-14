@@ -6,7 +6,7 @@ RSpec.describe "shelter review edit page" do
 
     review_1 = ShelterReview.create!(title: "What a great place!", rating: "5", content: "We got our new puppy from Happy Puppies and they totally lived up to their name.", image: "image.jpeg", shelter_id: shelter_1.id)
 
-    visit "/#{review_1.id}/edit"
+    visit "shelters/#{shelter_1.id}/reviews/#{review_1.id}/edit"
 
     expect(page).to have_content("Title:")
     expect(page).to have_content("Rating:")

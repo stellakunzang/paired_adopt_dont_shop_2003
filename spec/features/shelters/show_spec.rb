@@ -79,6 +79,6 @@ RSpec.describe "shelter show page" do
       click_link "Edit Review"
     end
 
-    expect(current_path).to eq("/#{review_1.id}/edit")
+    expect(current_path).to eq("/shelters/#{shelter_1.id}/reviews/#{review_1.id}/edit")
   end
 end
