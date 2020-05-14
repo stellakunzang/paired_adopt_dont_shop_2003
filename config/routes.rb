@@ -20,5 +20,6 @@ Rails.application.routes.draw do
 
   get '/shelters/:shelter_id/reviews/new', to: 'shelter_reviews#new'
   post '/shelters/:shelter_id', to: 'shelter_reviews#create'
-  get '/:review_id/edit', to: 'shelter_reviews#edit'
+  get '/shelters/:shelter_id/reviews/:review_id/edit', to: 'shelter_reviews#edit'
+  patch '/shelter/:shelter_id/reviews/:review_id', to: 'shelter_reviews#update'
 end

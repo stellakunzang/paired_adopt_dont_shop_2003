@@ -8,12 +8,15 @@ RSpec.describe "shelter review edit page" do
 
     visit "/#{review_1.id}/edit"
 
-    expect(:title).to have_content(review_1.title)
-    #add for rating, content, and image once I verify that this works
+    expect(page).to have_content("Title:")
+    expect(page).to have_content("Rating:")
+    expect(page).to have_content("Content:")
+    # expect page to have review_1.title etc.
+    #expect(page).to have_css()
 
     fill_in :title, with: "Cool dudes"
 
-    click_link "Update Review"
+    click_on "Update Review"
 
     expect(current_path).to eq("/shelters/#{shelter_1.id}")
 

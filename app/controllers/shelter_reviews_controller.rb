@@ -14,7 +14,9 @@ class ShelterReviewsController < ApplicationController
   end
 
   def edit
-  end 
+    @review = ShelterReview.find(params[:review_id])
+    @shelter_id = :shelter_id
+  end
 
   private
 
