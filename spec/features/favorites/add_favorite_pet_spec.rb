@@ -9,16 +9,16 @@ RSpec.describe "Add Favorite Pet" do
 
       visit "/pets/#{pet_1.id}"
 
-      expect(page).to have_button("Add to Favorite Pets")
+      expect(page).to have_button("Add to Favorites")
 
-      click_button("Add to Favorite Pets")
+      click_button("Add to Favorites")
 
       expect(current_path).to eq("/pets/#{pet_1.id}")
       expect(page).to have_content("Pet has been added to your favorites list")
       expect(page).to have_content("Favorite Pets: 1")
 
       visit "/pets/#{pet_2.id}"
-      
+
       click_button("Add to Favorites")
 
       expect(page).to have_content("Pet has been added to your favorites list")
