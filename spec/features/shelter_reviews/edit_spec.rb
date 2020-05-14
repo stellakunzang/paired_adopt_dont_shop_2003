@@ -12,7 +12,6 @@ RSpec.describe "shelter review edit page" do
     expect(page).to have_content("Rating:")
     expect(page).to have_content("Content:")
     # expect page to have review_1.title etc.
-    #expect(page).to have_css()
 
     fill_in :title, with: "Cool dudes"
 

@@ -5,7 +5,7 @@
 <br>
 <h2>Reviews</h2>
 <section class="index">
-<%= @shelter.shelter_reviews.each do |review| %>
+<% @shelter.shelter_reviews.each do |review| %>
   <section class= "review-<%= review.id %>">
     <div class="item">
     <h4>Title: <%= review.title %></h4>
