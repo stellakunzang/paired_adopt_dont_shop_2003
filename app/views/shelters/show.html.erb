@@ -13,6 +13,7 @@
     <p>Description: <%= review.content %></p>
     <img src=<%= review.image %> style = "width:100%">
     <br><a href="/shelters/<%= @shelter.id %>/reviews/<%= review.id %>/edit">Edit Review</a></br>
+    <br><a href="/shelters/<%= @shelter.id %>" data-method="DELETE">Delete Review</a></br>
     </div>
   </section>
 <% end %>
