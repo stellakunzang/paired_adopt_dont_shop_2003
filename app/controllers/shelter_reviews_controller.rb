@@ -4,7 +4,6 @@ class ShelterReviewsController < ApplicationController
   end
 
   def create
-    # insert empty string if image is left blank? This begs the question what is it now if it is left blank. Just nil? 
     new_review = ShelterReview.new(review_params)
     if new_review.save
       redirect_to("/shelters/#{params[:shelter_id]}")
