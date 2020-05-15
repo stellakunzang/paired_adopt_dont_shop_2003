@@ -1,10 +1,12 @@
 require "rails_helper"
 
 RSpec.describe Shelter do
+  
   describe "relationships" do
     it {should have_many :pets}
     it {should have_many :shelter_reviews}
   end
+
   describe "validations" do
     it { should validate_presence_of :name}
     it { should validate_presence_of :address}
@@ -12,4 +14,5 @@ RSpec.describe Shelter do
     it { should validate_presence_of :state}
     it { should validate_presence_of :zip}
   end
+
 end
