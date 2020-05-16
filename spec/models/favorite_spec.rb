@@ -1,6 +1,7 @@
 require "rails_helper"
 
 RSpec.describe Favorite do
+
   describe "class methods" do
     it "#total_count" do
       shelter_1 = Shelter.create(name: "Happy Puppies", address: "55 Street St", city: "Danger Mountain", state: "UT", zip: "80304")
