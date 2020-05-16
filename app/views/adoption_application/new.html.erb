@@ -1,6 +1,6 @@
-<h2>Enter a New Shelter:</h2>
+<h2>Pet Adoption Application:</h2>
 <section class="form">
-  <%= form_tag("/shelters", method: "post") do %>
+  <%= form_tag("/favorites", method: "post") do %>
     <%= label_tag(:name, "Name: ") %>
     <%= text_field_tag(:name) %><br>
     <%= label_tag(:address, "Address: ") %>
@@ -11,6 +11,10 @@
     <%= text_field_tag(:state) %><br>
     <%= label_tag(:zip, "Zip Code: ") %>
     <%= text_field_tag(:zip) %><br>
-    <%= submit_tag("Create Shelter") %>
+    <%= label_tag(:phone_number, "Phone Number: ") %>
+    <%= text_field_tag(:phone_number) %><br>
+    <%= label_tag(:description, "Description (how are you able to provide a good home to these pets?): ") %>
+    <%= text_field_tag(:description) %><br>
+    <%= submit_tag("Submit Application") %>
   <% end %>
 </section>

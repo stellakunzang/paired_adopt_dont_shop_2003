@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.describe "New Adoption Application" do
   it "can select pets from favorites to submit application to adopt" do
 
-    visit "/application/new"
+    visit "/adoption_application/new"
 
     fill_in :name, with: "Stella"
     fill_in :address, with: "3300 Josephine St"
@@ -13,7 +13,7 @@ RSpec.describe "New Adoption Application" do
     fill_in :phone_number, with: "757-489-4936"
     fill_in :description, with: "I love animals more than people."
 
-    click_button "Submit Application"
+    click_on "Submit Application"
   end
 
   describe "favorites index page" do
