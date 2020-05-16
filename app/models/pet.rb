@@ -4,7 +4,7 @@ class Pet < ApplicationRecord
 
   def adoption_status_text
     if adoption_status == "adoptable"
-      "Adoption Pending "
+      "Adoption Pending"
     else
       "Adoptable"
     end
