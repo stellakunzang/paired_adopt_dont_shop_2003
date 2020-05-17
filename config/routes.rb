@@ -20,6 +20,7 @@ Rails.application.routes.draw do
 
   get '/favorites', to: 'favorites#index'
   patch '/favorites/:pet_id', to: 'favorites#update'
+  delete '/favorites/:pet_id', to: 'favorites#destroy'
 end
 
 #play with order to see if this fixes the problem with update
