@@ -6,7 +6,7 @@ RSpec.describe "New Adoption Application" do
     shelter = Shelter.create(name: "Happy Puppies", address: "55 Street St", city: "Danger Mountain", state: "UT", zip: "80304")
     pet_1 = Pet.create(image: "image.jpeg", name: "Kunga", approximate_age: "1", sex: "male", shelter_id: shelter.id)
 
-    favorites.add_pet(pet_1.id)
+    Favorite.new([pet_1])
 
     visit "/adoption_application/new"
 
