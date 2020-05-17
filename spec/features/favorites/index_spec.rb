@@ -53,5 +53,18 @@ RSpec.describe "Favorite Pets Index", type: :feature do
       expect(page).to_not have_content(pet_2.name)
       expect(page).to have_content("Favorite Pets: 0")
     end
+
+    it "and I have not added a pet, I see a message" do
+      shelter = Shelter.create(name: "Happy Puppies", address: "55 Street St", city: "Danger Mountain", state: "UT", zip: "80304")
+      pet_1 = Pet.create(image: "https://i.pinimg.com/originals/d2/b8/a5/d2b8a59f451f3f13300fb33d5eff5e12.jpg", name: "Kunga", approximate_age: "1", sex: "male", shelter_id: shelter.id)
+      pet_2 = Pet.create(image: "https://img.thrfun.com/img/081/592/orange_tabby_x2.jpg", name: "Honey Pie", approximate_age: "11", sex: "female", shelter_id: shelter.id)
+
+      visit "/favorites"
+
+      expect(page).to_not have_content(pet_1.name)
+      expect(page).to_not have_content(pet_2.name)
+      expect(page).to have_content("Favorite Pets: 0")
+      expect(page).to have_content("You have not added any pets.")
+    end
   end
 end
