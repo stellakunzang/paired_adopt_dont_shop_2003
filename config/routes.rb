@@ -17,10 +17,15 @@ Rails.application.routes.draw do
   get '/pets/:id/edit', to: 'pets#edit'
   patch '/pets/:id', to: 'pets#update'
   delete '/pets/:id', to: 'pets#destroy'
+  patch '/pets/:id/adopt', to: 'pets#adopt_update'
 
   get '/favorites', to: 'favorites#index'
   patch '/favorites/:pet_id', to: 'favorites#update'
   delete '/favorites/:pet_id', to: 'favorites#destroy'
-end
 
-#play with order to see if this fixes the problem with update
+  get '/shelters/:shelter_id/reviews/new', to: 'shelter_reviews#new'
+  post '/shelters/:shelter_id', to: 'shelter_reviews#create'
+  get '/shelters/:shelter_id/reviews/:review_id/edit', to: 'shelter_reviews#edit'
+  patch '/shelters/:shelter_id/reviews/:review_id', to: 'shelter_reviews#update'
+  delete '/shelters/:shelter_id/reviews/:review_id', to: 'shelter_reviews#destroy'
+end
