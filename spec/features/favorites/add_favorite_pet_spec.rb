@@ -35,14 +35,14 @@ RSpec.describe "Add Favorite Pet" do
       click_button("Add to Favorites")
 
       expect(page).to have_content("Favorite Pets: 1")
-      expect(page).to_not have_button("Add to Favorites")
+      expect(page).to_not have_content("Add to Favorites")
       expect(page).to have_button("Remove from Favorites")
 
       click_button("Remove from Favorites")
 
       expect(current_path).to eq("/pets/#{pet_1.id}")
       expect(page).to have_content("Pet has been removed from your favorites list")
-      expect(page).to_not have_button("Add to Favorites")
+      expect(page).to_not have_content("Add to Favorites")
 
       expect(page).to have_content("Favorite Pets: 0")
     end
