@@ -13,7 +13,7 @@ RSpec.describe "New Adoption Application" do
     fill_in :phone_number, with: "757-489-4936"
     fill_in :description, with: "I love animals more than people."
 
-    click_on "Submit Application"
+    # click_on "Submit Application"
   end
 
   describe "favorites index page" do
