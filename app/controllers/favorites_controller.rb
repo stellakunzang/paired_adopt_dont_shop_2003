@@ -17,6 +17,6 @@ class FavoritesController < ApplicationController
   def destroy
     favorite.contents.delete(params[:pet_id])
     flash[:notice] = "Pet has been removed from your favorites list"
-    redirect_to "/pets/#{params[:pet_id]}"
+    redirect_back fallback_location: current_cycle
   end
 end
