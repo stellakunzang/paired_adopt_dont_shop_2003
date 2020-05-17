@@ -1,7 +1,10 @@
 <h1>Favorite Pets Index</h1>
 
 <% favorite.contents.keys.each do |pet_id| %>
-  <% pet = Pet.find(pet_id) %>
-  <%= link_to "#{pet.name}", "/pets/#{pet_id.to_i}"%><br>
-  <%= image_tag "#{pet.image}" %><br>
+  <section id="pets-<%= pet_id %>">
+    <% pet = Pet.find(pet_id) %>
+    <%= link_to "#{pet.name}", "/pets/#{pet_id.to_i}"%><br>
+    <%= image_tag "#{pet.image}" %><br>
+    <%= button_to "Remove from Favorites", "/favorites/#{pet.id}", method: :delete %>
+  </section>
 <% end %>
