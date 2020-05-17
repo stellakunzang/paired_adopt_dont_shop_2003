@@ -29,4 +29,5 @@ Rails.application.routes.draw do
 
   get '/adoption_application/new', to: 'adoption_application#new'
   post '/favorites', to: 'adoption_application#create'
+  get '/favorites', to: 'favorites#index'
 end

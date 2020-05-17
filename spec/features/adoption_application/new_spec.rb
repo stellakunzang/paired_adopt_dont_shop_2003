@@ -10,7 +10,7 @@ RSpec.describe "New Adoption Application" do
 
     visit "/adoption_application/new"
 
-    select "Kunga", from: :favorites
+    # select "Kunga", from: :pets
 
     fill_in :name, with: "Stella"
     fill_in :address, with: "3300 Josephine St"
@@ -23,7 +23,7 @@ RSpec.describe "New Adoption Application" do
     click_on "Submit Application"
   end
 
-  xit "can display flash message if application fields are left blank" do
+  it "can display flash message if application fields are left blank" do
 
     shelter = Shelter.create(name: "Happy Puppies", address: "55 Street St", city: "Danger Mountain", state: "UT", zip: "80304")
     pet_1 = Pet.create(image: "image.jpeg", name: "Kunga", approximate_age: "1", sex: "male", shelter_id: shelter.id)
@@ -32,7 +32,7 @@ RSpec.describe "New Adoption Application" do
 
     visit "/adoption_application/new"
 
-    select "Kunga", from: :favorites
+    # select "Kunga", from: :favorites
 
     fill_in :name, with: "Stella"
     fill_in :address, with: "3300 Josephine St"
@@ -59,7 +59,7 @@ RSpec.describe "New Adoption Application" do
 
       visit "/adoption_application/new"
 
-      select "Kunga", from: :favorites
+      # select "Kunga", from: :favorites
 
       fill_in :name, with: "Stella"
       fill_in :address, with: "3300 Josephine St"
