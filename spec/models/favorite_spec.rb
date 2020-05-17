@@ -25,4 +25,12 @@ RSpec.describe Favorite do
       expect(favorite.contents).to eq({'1' => 3, '2' => 4})
     end
   end
+
+  describe "#count_of" do
+    it "returns the count of all pets in the favorites list" do
+      favorite = Favorite.new({})
+
+      expect(favorite.count_of(5)).to eq(0)
+    end
+  end
 end
