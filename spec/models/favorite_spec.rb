@@ -33,4 +33,14 @@ RSpec.describe Favorite do
       expect(favorite.count_of(5)).to eq(0)
     end
   end
+
+  describe "#favorite_status" do
+    it "tells you whehter a pet has favorite status or not" do
+      favorite = Favorite.new({})
+
+      favorite.add_pet(1)
+
+      expect(favorite.favorite_status(1)).to eq(true)
+    end
+  end
 end
