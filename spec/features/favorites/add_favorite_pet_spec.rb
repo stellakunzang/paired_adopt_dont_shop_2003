@@ -21,6 +21,7 @@ RSpec.describe "Add Favorite Pet" do
 
       click_button("Add to Favorites")
 
+      expect(current_path).to eq("/pets/#{pet_2.id}")
       expect(page).to have_content("Pet has been added to your favorites list")
       expect(page).to have_content("Favorite Pets: 2")
     end
