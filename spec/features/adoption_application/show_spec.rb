@@ -19,5 +19,9 @@ RSpec.describe "applications show page" do
     expect(page).to have_content(application.zip)
     expect(page).to have_content(application.phone_number)
     expect(page).to have_content(pet_1.name)
+
+    click_link "#{pet_1.name}"
+
+    expect(current_path).to eq("/pets/#{pet_1.id}")
   end
 end
