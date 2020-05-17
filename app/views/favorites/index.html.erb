@@ -1,4 +1,7 @@
 <h1>Favorite Pets Index</h1>
+<% if !favorite.contents.empty? %>
+  <%= link_to "Remove All Pets", "/favorites", method: :delete %>
+<% end %><br>
 
 <% if favorite.contents.empty? %>
   <p>You have not added any pets.</p>
@@ -12,5 +15,3 @@
     </section>
   <% end %>
 <% end %>
-
-<%= link_to "Remove All Pets", "/favorites", method: :delete %>
