@@ -8,7 +8,7 @@ RSpec.describe "New Adoption Application" do
 
     Favorite.new([pet_1])
 
-    visit "/adoption_application/new"
+    visit "/adoption_applications/new"
 
     # select "Kunga", from: :pets
 
@@ -30,7 +30,7 @@ RSpec.describe "New Adoption Application" do
 
     Favorite.new([pet_1])
 
-    visit "/adoption_application/new"
+    visit "/adoption_applications/new"
 
     # select "Kunga", from: :favorites
 
@@ -44,7 +44,7 @@ RSpec.describe "New Adoption Application" do
 
     click_on "Submit Application"
 
-    expect(current_path).to eq("/adoption_application/new")
+    expect(current_path).to eq("/adoption_applications/new")
     expect(page).to have_content("All fields must be completed in order to submit an application.")
   end
 
@@ -57,7 +57,7 @@ RSpec.describe "New Adoption Application" do
 
       Favorite.new([pet_1, pet_2])
 
-      visit "/adoption_application/new"
+      visit "/adoption_applications/new"
 
       # select "Kunga", from: :favorites
 

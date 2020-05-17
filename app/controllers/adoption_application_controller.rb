@@ -12,7 +12,7 @@ class AdoptionApplicationController < ApplicationController
       redirect_to "/favorites"
     else
       flash[:notice] = "All fields must be completed in order to submit an application."
-      redirect_to("/adoption_application/new")
+      redirect_to("/adoption_applications/new")
     end
   end
 
