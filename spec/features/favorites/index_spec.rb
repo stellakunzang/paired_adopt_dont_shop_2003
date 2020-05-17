@@ -37,20 +37,20 @@ RSpec.describe "Favorite Pets Index", type: :feature do
 
       visit "/favorites"
 
-      within("#favorite-#{pet_1.id}") do
+      within("#pets-#{pet_1.id}") do
         click_button("Remove from Favorites")
         expect(current_path).to eq("/favorites")
-        expect(page).to_not have_content(pet_1.name)
       end
 
+      expect(page).to_not have_content(pet_1.name)
       expect(page).to have_content("Favorite Pets: 1")
 
-      within("#favorite-#{pet_2.id}") do
+      within("#pets-#{pet_2.id}") do
         click_button("Remove from Favorites")
         expect(current_path).to eq("/favorites")
-        expect(page).to_not have_content(pet_2.name)
       end
 
+      expect(page).to_not have_content(pet_2.name)
       expect(page).to have_content("Favorite Pets: 0")
     end
   end
