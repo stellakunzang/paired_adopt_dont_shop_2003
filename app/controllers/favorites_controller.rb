@@ -15,8 +15,12 @@ class FavoritesController < ApplicationController
   end
 
   def destroy
-    favorite.contents.delete(params[:pet_id])
-    flash[:notice] = "Pet has been removed from your favorites list"
+    if favorite.contents.delete(params[:pet_id])
+      flash[:notice] = "Pet has been removed from your favorites list"
+    else
+      favorite.contents.clear
+      flash[:notice] = "You have removed ALL pets."
+    end
     redirect_back fallback_location: current_cycle
   end
 end
