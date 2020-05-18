@@ -32,21 +32,21 @@ RSpec.describe "pet show page" do
     expect(page).to have_content(pet_1.adoption_status)
   end
 
-  # it "can update adoption status" do
-  #   shelter_1 = Shelter.create(name: "Happy Puppies", address: "55 Street St", city: "Danger Mountain", state: "UT", zip: "80304")
-  #
-  #   pet_1 = Pet.create(image: "image.jpeg", name: "Kunga", approximate_age: "1", sex: "male", shelter_id: shelter_1.id)
-  #
-  #   visit "/pets/#{pet_1.id}"
-  #   expect(page).to have_content("adoptable")
-  #
-  #   click_link "Change to Adoption Pending"
-  #
-  #   expect(current_path).to eq("/pets/#{pet_1.id}")
-  #   expect(page).to have_content("adoption pending")
-  #
-  #   click_link "Change to Adoptable"
-  #   expect(current_path).to eq("/pets/#{pet_1.id}")
-  #   expect(page).to have_content("adoptable")
-  # end
+  it "can update adoption status" do
+    shelter_1 = Shelter.create(name: "Happy Puppies", address: "55 Street St", city: "Danger Mountain", state: "UT", zip: "80304")
+
+    pet_1 = Pet.create(image: "image.jpeg", name: "Kunga", approximate_age: "1", sex: "male", shelter_id: shelter_1.id)
+
+    visit "/pets/#{pet_1.id}"
+    expect(page).to have_content("adoptable")
+
+    click_link "Change to Adoption Pending"
+
+    expect(current_path).to eq("/pets/#{pet_1.id}")
+    expect(page).to have_content("adoption pending")
+
+    click_link "Change to Adoptable"
+    expect(current_path).to eq("/pets/#{pet_1.id}")
+    expect(page).to have_content("adoptable")
+  end
 end

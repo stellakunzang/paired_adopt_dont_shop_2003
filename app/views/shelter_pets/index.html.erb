@@ -4,17 +4,16 @@
 <% @pets.each do |pet| %>
   <div class="item">
     <img src= <%= pet.image %> style="width:75%">
-    <div class="header"><a href="/pets/<%= pet.id %>"><%= pet.name %></a></div><br>
+    <div class="header"><%= link_to "#{pet.name}", "/pets/#{pet.id}" %></div><br>
     <p><%= "Description: #{pet.description}" %></p>
     <p><%= "Age: #{pet.approximate_age}" %></p>
     <p><%= "Sex: #{pet.sex}" %></p>
     <p><%= "Adoption Status: #{pet.adoption_status}" %></p>
     <div class="links">
-      <p><a href="/pets/<%= pet.id %>/edit">Edit Pet Information</a>
-      <p><a href="/pets/<%= pet.id %>" data-method="DELETE">Delete <%= pet.name %></a></p>
+      <p><%= link_to "Edit Pet Information", "/pets/#{pet.id}/edit" %></p>
+      <p><%= link_to "Delete #{pet.name}", "/pets/#{pet.id}", method: :delete %></p>
     </div>
   </div>
 <% end %>
 </ section>
-<br><a href="/shelters/<%= @shelter_id %>/pets/new">Create Pet</a></br>
-<br>
+<br><%= link_to "Create Pet", "/shelters/#{@shelter_id}/pets/new" %></br>

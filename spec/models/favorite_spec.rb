@@ -23,6 +23,15 @@ RSpec.describe Favorite do
       favorite.add_pet(2)
 
       expect(favorite.contents).to eq({'1' => 3, '2' => 4})
+
+  describe "class methods" do
+    it "#total_count" do
+      shelter_1 = Shelter.create(name: "Happy Puppies", address: "55 Street St", city: "Danger Mountain", state: "UT", zip: "80304")
+      pet_1 = Pet.create(image: "image.jpeg", name: "Kunga", approximate_age: "1", sex: "male", shelter_id: shelter_1.id)
+      pet_2 = Pet.create(image: "image.jpeg", name: "Honey Pie", approximate_age: "11", sex: "female", shelter_id: shelter_1.id)
+      favorites = Favorite.new([pet_1, pet_2])
+
+      expect(favorites.total_count).to eq(2)
     end
   end
 
