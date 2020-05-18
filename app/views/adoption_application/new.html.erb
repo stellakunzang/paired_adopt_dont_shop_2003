@@ -1,8 +1,12 @@
 <h2>Pet Adoption Application:</h2>
 <section class="form">
   <%= form_tag("/favorites", method: "post") do %>
-    <%= label_tag(:pets, "Pets To Apply For: ") %>
-    <%= select_tag(:pets, options_for_select("Favorites")) %><br />
+    <%= label_tag("Pets To Apply For: ") %><br>
+    <% @favorites.each do |favorite_id| %>
+      <% favorite = Pet.find(favorite_id) %>
+      <%= label_tag("#{favorite.name}") %>
+      <%= check_box_tag("#{favorite_id}") %> <br>
+    <% end %><br />
     <%= label_tag(:name, "Name: ") %>
     <%= text_field_tag(:name) %><br>
     <%= label_tag(:address, "Address: ") %>

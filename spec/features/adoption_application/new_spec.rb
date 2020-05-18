@@ -2,15 +2,38 @@ require "rails_helper"
 
 RSpec.describe "New Adoption Application" do
   it "can select pets from favorites to submit application to adopt" do
+    shelter = Shelter.create(name: "Happy Puppies", address: "55 Street St", city: "Danger Mountain", state: "UT", zip: "80304")
+    pet_1 = Pet.create(image: "image.jpeg", name: "Kunga", approximate_age: "1", sex: "male", shelter_id: shelter.id)
+    pet_2 = Pet.create(image: "image.jpeg", name: "Honey Pie", approximate_age: "11", sex: "female", shelter_id: shelter.id)
+
+    visit "/pets/#{pet_1.id}"
+    click_button("Add to Favorites")
+
+    visit "/pets/#{pet_2.id}"
+    click_button("Add to Favorites")
+
+    visit "/adoption_applications/new"
+
+    check "#{pet_1.id}"
+
+    expect(page).to have_field("#{pet_1.id}", checked: true)
+    expect(page).to have_field("#{pet_2.id}", checked: false)
+  end
+
+  xit "can submit a complete application" do
 
     shelter = Shelter.create(name: "Happy Puppies", address: "55 Street St", city: "Danger Mountain", state: "UT", zip: "80304")
     pet_1 = Pet.create(image: "image.jpeg", name: "Kunga", approximate_age: "1", sex: "male", shelter_id: shelter.id)
 
-    Favorite.new([pet_1])
+    visit "/pets/#{pet_1.id}"
+    click_button("Add to Favorites")
+
+    visit "/pets/#{pet_2.id}"
+    click_button("Add to Favorites")
 
     visit "/adoption_applications/new"
 
-    # select "Kunga", from: :pets
+    select "Kunga", from: :pets
 
     fill_in :name, with: "Stella"
     fill_in :address, with: "3300 Josephine St"
@@ -28,7 +51,6 @@ RSpec.describe "New Adoption Application" do
     shelter = Shelter.create(name: "Happy Puppies", address: "55 Street St", city: "Danger Mountain", state: "UT", zip: "80304")
     pet_1 = Pet.create(image: "image.jpeg", name: "Kunga", approximate_age: "1", sex: "male", shelter_id: shelter.id)
 
-    Favorite.new([pet_1])
 
     visit "/adoption_applications/new"
 

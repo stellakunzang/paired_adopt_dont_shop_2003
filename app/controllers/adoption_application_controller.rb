@@ -1,7 +1,6 @@
 class AdoptionApplicationController < ApplicationController
   def new
-    # need access to all of the favorites
-    # need to get a list of the names of the favorites to use for the select_tag
+    @favorites = favorite.contents.keys
   end
 
   def create
@@ -17,7 +16,7 @@ class AdoptionApplicationController < ApplicationController
   end
 
   def show
-  end 
+  end
 
   private
 
