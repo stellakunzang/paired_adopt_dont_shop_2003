@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get '/', to: 'shelters#index'
   get '/shelters/', to: 'shelters#index'
   get '/shelters/new', to: 'shelters#new'
@@ -22,7 +21,4 @@ Rails.application.routes.draw do
   patch '/favorites/:pet_id', to: 'favorites#update'
   delete '/favorites/:pet_id', to: 'favorites#destroy'
   delete '/favorites', to: 'favorites#destroy'
-
 end
-
-#play with order to see if this fixes the problem with update
