@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get '/', to: 'shelters#index'
   get '/shelters/', to: 'shelters#index'
   get '/shelters/new', to: 'shelters#new'
@@ -22,6 +21,7 @@ Rails.application.routes.draw do
   get '/favorites', to: 'favorites#index'
   patch '/favorites/:pet_id', to: 'favorites#update'
   delete '/favorites/:pet_id', to: 'favorites#destroy'
+  delete '/favorites', to: 'favorites#destroy'
 
   get '/shelters/:shelter_id/reviews/new', to: 'shelter_reviews#new'
   post '/shelters/:shelter_id', to: 'shelter_reviews#create'
