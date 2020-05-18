@@ -105,6 +105,6 @@ RSpec.describe "Favorite Pets Index", type: :feature do
 
     click_link "Apply to Adopt"
 
-    expect(current_path).to eq("adoption_applications/new")
+    expect(current_path).to eq("/adoption_applications/new")
   end
 end
