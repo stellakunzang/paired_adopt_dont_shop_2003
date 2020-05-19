@@ -10,9 +10,6 @@ class AdoptionApplication < ApplicationRecord
         pets << pet
       end
     end
-    pets.uniq 
+    pets.uniq
   end
 end
-
-# AdoptionApplication.all.each do |app| %>
-# app.pets.each do |pet|
