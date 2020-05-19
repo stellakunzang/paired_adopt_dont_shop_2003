@@ -7,13 +7,14 @@
 <p><%= "Adoption Status: #{@pet.adoption_status}" %></p>
 <div class="links">
 
-<% if favorite.favorite_status(@pet.id) == true %>
-  <%= button_to "Remove from Favorites", "/favorites/#{@pet.id}", method: :delete %>
-<% else %>
+<div class="button">
+  <% if favorite.favorite_status(@pet.id) == true %>
+    <%= button_to "Remove from Favorites", "/favorites/#{@pet.id}", method: :delete %>
+  <% else %>
   <%= button_to "Add to Favorites", "/favorites/#{@pet.id}", method: :patch %>
-<% end %>
+  <% end %>
+</div>
 
-<%= button_to "Add to Favorites", "/favorites/#{@pet.id}", method: :patch %>
 <%= link_to "Change to #{@pet.adoption_status_text}", "/pets/#{@pet.id}/adopt", method: :patch %>
 
 <a href="/pets/<%= @pet.id %>/edit">Update Pet</a>
