@@ -43,7 +43,7 @@ RSpec.describe "applications show page" do
     end
 
     expect(current_path).to eq("/pets/#{pet_1.id}")
-    expect(page).to have_content("pending")
+    expect(page).to have_content("adoption pending")
     expect(page).to have_content("This pet is on hold for Stella.")
   end
 end
