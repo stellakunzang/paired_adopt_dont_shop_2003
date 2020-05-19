@@ -139,4 +139,33 @@ RSpec.describe "Favorite Pets Index", type: :feature do
     expect(page).to have_no_content(pet_1.name)
     expect(page).to have_content(pet_2.name)
   end
+
+  it "can display all pets with an application submitted" do
+    shelter = Shelter.create(name: "Happy Puppies", address: "55 Street St", city: "Danger Mountain", state: "UT", zip: "80304")
+
+    pet_1 = Pet.create(image: "image.jpeg", name: "Kunga", approximate_age: "1", sex: "male", shelter_id: shelter.id)
+    pet_2 = Pet.create(image: "image.jpeg", name: "Honey Pie", approximate_age: "11", sex: "female", shelter_id: shelter.id)
+
+    visit "/pets/#{pet_1.id}"
+    click_button("Add to Favorites")
+
+    visit "/pets/#{pet_2.id}"
+    click_button("Add to Favorites")
+
+    application = AdoptionApplication.create(name: "Stella", address: "street", city: "City", state: "ST", zip: "34567", phone_number: "545-567-7643", description: "I'm awesome")
+
+    PetApplication.create(pet_id: pet_1.id, adoption_application_id: application.id)
+
+    visit "/favorites"
+
+    expect(page).to have_content(pet_2.name)
+
+    within ".existing_applications" do
+      expect(page).to have_content(pet_1.name)
+      expect(page).to have_no_content(pet_2.name)
+    end
+
+    click_link "Kunga"
+    expect(current_path).to eq("/pets/#{pet_1.id}")
+  end
 end
