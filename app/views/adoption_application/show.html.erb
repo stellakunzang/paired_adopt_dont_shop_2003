@@ -1,14 +1,19 @@
 <h3>Application: </h3>
 <section class="index">
-<p><%= "Name: #{@application.name}" %></p>
-<p><%= "Address: #{@application.address}" %></p>
-<p><%= "City: #{@application.city}" %></p>
-<p><%= "State: #{@application.state}" %></p>
-<p><%= "Zip Code: #{@application.zip}" %></p>
-<p><%= "Phone Number: #{@application.phone_number}" %></p>
-<p><%= "Description: #{@application.description}" %></p>
+  <p><%= "Name: #{@application.name}" %></p>
+  <p><%= "Address: #{@application.address}" %></p>
+  <p><%= "City: #{@application.city}" %></p>
+  <p><%= "State: #{@application.state}" %></p>
+  <p><%= "Zip Code: #{@application.zip}" %></p>
+  <p><%= "Phone Number: #{@application.phone_number}" %></p>
+  <p><%= "Description: #{@application.description}" %></p>\
+</section>
+
 <h2>Pets Applied For: </h2>
 <% @application.pets.each do |pet| %>
-  <%= link_to "#{pet.name}", "/pets/#{pet.id}" %>
+  <section class="pets-<%= pet.id %>">
+    <%= link_to "#{pet.name}", "/pets/#{pet.id}" %>
+    <%= link_to "Approve Application", "/pets/#{pet.id}/applications/#{@application.id}", method: :patch %>
   <br></br>
+  </section>
 <% end %>
