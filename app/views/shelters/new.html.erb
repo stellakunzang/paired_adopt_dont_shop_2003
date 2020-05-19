@@ -3,13 +3,13 @@
   <%= form_tag("/shelters", method: "post") do %>
     <%= label_tag(:name, "Name: ") %>
     <%= text_field_tag(:name) %><br>
-    <%= label_tag(:name, "Address: ") %>
+    <%= label_tag(:address, "Address: ") %>
     <%= text_field_tag(:address) %><br>
-    <%= label_tag(:name, "City: ") %>
+    <%= label_tag(:city, "City: ") %>
     <%= text_field_tag(:city ) %><br>
-    <%= label_tag(:name, "State: ") %>
+    <%= label_tag(:state, "State: ") %>
     <%= text_field_tag(:state) %><br>
-    <%= label_tag(:name, "Zip Code: ") %>
+    <%= label_tag(:zip, "Zip Code: ") %>
     <%= text_field_tag(:zip) %><br>
     <%= submit_tag("Create Shelter") %>
   <% end %>
