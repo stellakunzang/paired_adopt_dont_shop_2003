@@ -3,6 +3,8 @@
   <%= "There are no applications for this pet yet. Add them to your favorites and apply now!" %>
 <% else %>
   <% @applicants.each do |applicant| %>
+    <div class="item">
     <%= link_to "#{applicant.name}", "/adoption_applications/#{applicant.id}" %>
+    </div>
   <% end %>
 <% end %>
