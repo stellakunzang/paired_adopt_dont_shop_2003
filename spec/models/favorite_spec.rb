@@ -8,7 +8,7 @@ RSpec.describe Favorite do
         '2' => 3
         })
 
-      expect(favorite.total_count).to eq(5)
+      expect(favorite.total_count).to eq(2)
     end
   end
 
@@ -23,6 +23,8 @@ RSpec.describe Favorite do
       favorite.add_pet(2)
 
       expect(favorite.contents).to eq({'1' => 3, '2' => 4})
+    end
+  end
 
   describe "class methods" do
     it "#total_count" do
