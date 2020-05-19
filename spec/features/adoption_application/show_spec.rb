@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe "applications show page" do
-  xit "can display the application information including pets applied for" do
+  it "can display the application information including pets applied for" do
     shelter = Shelter.create(name: "Happy Puppies", address: "55 Street St", city: "Danger Mountain", state: "UT", zip: "80304")
 
     pet_1 = Pet.create(image: "image.jpeg", name: "Kunga", approximate_age: "1", sex: "male", shelter_id: shelter.id)

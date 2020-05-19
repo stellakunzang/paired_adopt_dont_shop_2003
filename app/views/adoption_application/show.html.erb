@@ -1,2 +1,11 @@
-<section class="item">
-  
+<h2>Application: </h2>
+<section class="index">
+<p><%= "Name: #{@application.name}" %></p>
+<p><%= "Address: #{@application.address}" %></p>
+<p><%= "City: #{@application.city}" %><%= "State: #{@application.state}" %><%= "Zip Code: #{@application.zip}" %></p>
+<p><%= "Phone Number: #{@application.phone_number}" %></p>
+<p><%= "Description: #{@application.description}" %></p>
+<h4>Pets Applied For: </h4>
+<% @application.pets.each do |pet| %>
+  <%= link_to "#{pet.name}", "/pets/#{pet.id}" %>
+<% end %>
