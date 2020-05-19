@@ -136,8 +136,11 @@ RSpec.describe "Favorite Pets Index", type: :feature do
 
     expect(current_path).to eq("/favorites")
     expect(page).to have_content("Your application has been submitted!")
-    expect(page).to have_no_content(pet_1.name)
-    expect(page).to have_content(pet_2.name)
+
+    within(".favorites") do
+      expect(page).to have_no_content(pet_1.name)
+      expect(page).to have_content(pet_2.name)
+    end
   end
 
   it "can display all pets with an application submitted" do
@@ -158,14 +161,11 @@ RSpec.describe "Favorite Pets Index", type: :feature do
 
     visit "/favorites"
 
-    expect(page).to have_content(pet_2.name)
-
     within ".existing_applications" do
       expect(page).to have_content(pet_1.name)
       expect(page).to have_no_content(pet_2.name)
+      click_link "Kunga"
+      expect(current_path).to eq("/pets/#{pet_1.id}")
     end
-
-    click_link "Kunga"
-    expect(current_path).to eq("/pets/#{pet_1.id}")
   end
 end

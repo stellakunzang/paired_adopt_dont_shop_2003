@@ -6,6 +6,7 @@
 <% if favorite.contents.empty? %>
   <p>You have not added any pets.</p>
 <% else %>
+  <div class ="favorites">
   <% favorite.contents.keys.each do |pet_id| %>
     <section id="pets-<%= pet_id %>">
       <% pet = Pet.find(pet_id) %>
@@ -14,6 +15,15 @@
       <%= button_to "Remove from Favorites", "/favorites/#{pet.id}", method: :delete %>
     </section>
   <% end %>
+  </div>
+  <div class="existing_applications">
+  <h2>These pets already have applications</h2>
+    <% AdoptionApplication.all.each do |app| %>
+      <% app.pets.each do |pet| %>
+        <%= link_to "#{pet.name}", "/pets/#{pet.id}"%><br>
+      <% end %>
+    <% end %>
+  </div>
 <% end %>
 
 <%= link_to "Apply to Adopt", "/adoption_applications/new" %>
