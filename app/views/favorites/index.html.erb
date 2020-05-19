@@ -18,10 +18,8 @@
   </div>
   <div class="existing_applications">
   <h2>These pets already have applications</h2>
-    <% AdoptionApplication.all.each do |app| %>
-      <% app.pets.each do |pet| %>
-        <%= link_to "#{pet.name}", "/pets/#{pet.id}"%><br>
-      <% end %>
+    <% AdoptionApplication.pets.each do |pet| %>
+      <%= link_to "#{pet.name}", "/pets/#{pet.id}"%><br>
     <% end %>
   </div>
 <% end %>
