@@ -57,7 +57,7 @@ RSpec.describe "pet show page" do
     pet_2 = Pet.create(image: "image.jpeg", name: "Honey Pie", approximate_age: "11", sex: "female", shelter_id: shelter.id)
 
     application_1 = AdoptionApplication.create(name: "Stella", address: "street", city: "City", state: "ST", zip: "34567", phone_number: "545-567-7643", description: "I'm awesome")
-    application_2 = AdoptionApplication.create(name: "Stella", address: "street", city: "City", state: "ST", zip: "34567", phone_number: "545-567-7643", description: "I'm still awesome")
+    application_2 = AdoptionApplication.create(name: "Stellar", address: "street", city: "City", state: "ST", zip: "34567", phone_number: "545-567-7643", description: "I'm still awesome")
 
     PetApplication.create(pet_id: pet_1.id, adoption_application_id: application_1.id)
     PetApplication.create(pet_id: pet_2.id, adoption_application_id: application_1.id)
@@ -77,7 +77,7 @@ RSpec.describe "pet show page" do
     expect(current_path).to eq("/adoption_applications/#{application_1.id}")
 
     visit "/pets/#{pet_1.id}/applications"
-    
+
     click_link "#{application_2.name}"
     expect(current_path).to eq("/adoption_applications/#{application_2.id}")
   end
