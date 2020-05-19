@@ -5,9 +5,10 @@ class AdoptionApplicationController < ApplicationController
 
   def create
     new_application = AdoptionApplication.new(application_params)
-    # :pets will be the Pet objects that are selected during the application
-    # will I be able to do this directly or will have to use the name to grab the pet objects and then associate them with :pet
     if new_application.save
+      PetApplication.create(pet_id: params[:pets], adoption_application_id: new_application.id)
+      favorite.contents.delete(params[:pets])
+      flash[:notice] = "Your application has been submitted!"
       redirect_to "/favorites"
     else
       flash[:notice] = "All fields must be completed in order to submit an application."
