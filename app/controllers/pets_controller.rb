@@ -9,6 +9,9 @@ class PetsController < ApplicationController
 
   def show
     @pet = Pet.find(params[:id])
+    if !params[:application_id].nil?
+      @applicant = AdoptionApplication.find(params[:application_id])
+    end
   end
 
   def create
