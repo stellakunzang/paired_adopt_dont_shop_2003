@@ -4,8 +4,8 @@
     <%= label_tag("Pets To Apply For: ") %><br>
     <% @favorites.each do |favorite_id| %>
       <% favorite = Pet.find(favorite_id) %>
-      <%= label_tag("#{favorite.name}") %>
-      <%= check_box_tag("#{favorite_id}") %> <br>
+      <%= check_box_tag(:pets, value = favorite_id) %>
+      <%= label_tag("#{favorite.name}")%>
     <% end %><br />
     <%= label_tag(:name, "Name: ") %>
     <%= text_field_tag(:name) %><br>
