@@ -1,2 +1,6 @@
 class PetApplicationsController < ApplicationController
-end 
+  def show
+    @pet = Pet.find(params[:pet_id])
+    @applicants = @pet.adoption_applications
+  end
+end

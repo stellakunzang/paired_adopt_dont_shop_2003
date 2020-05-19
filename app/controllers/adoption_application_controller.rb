@@ -17,7 +17,7 @@ class AdoptionApplicationController < ApplicationController
   end
 
   def show
-    @application = AdoptionApplication.find(params[:id])
+    @application = AdoptionApplication.find(params[:application_id])
   end
 
   private
