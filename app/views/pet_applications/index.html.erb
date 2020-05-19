@@ -1,4 +1,8 @@
 <h2>Applicants for <%= "#{@pet.name}" %></h2>
-<% @applicants.each do |applicant| %>
-  <%= link_to "#{applicant.name}", "/adoption_applications/#{applicant.id}" %>
+<% if @applicants.empty? %>
+  <%= "There are no applications for this pet yet. Add them to your favorites and apply now!" %>
+<% else %>
+  <% @applicants.each do |applicant| %>
+    <%= link_to "#{applicant.name}", "/adoption_applications/#{applicant.id}" %>
+  <% end %>
 <% end %>
