@@ -5,6 +5,10 @@
 <p><%= "Age: #{@pet.approximate_age}" %></p>
 <p><%= "Sex: #{@pet.sex}" %></p>
 <p><%= "Adoption Status: #{@pet.adoption_status}" %></p>
+<% if !@applicant.nil? %>
+  <p><%= "This pet is on hold for #{@applicant.name}." %></p>
+<% end %>
+
 <div class="links">
 
 <% if favorite.favorite_status(@pet.id) == true %>
