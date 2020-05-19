@@ -34,7 +34,7 @@ RSpec.describe "applications show page" do
     application = AdoptionApplication.create(name: "Stella", address: "street", city: "City", state: "ST", zip: "34567", phone_number: "545-567-7643", description: "I'm awesome")
 
     PetApplication.create(pet_id: pet_1.id, adoption_application_id: application.id)
-    PetApplication.create(pet_id: pet_2.id, adoption_application_id: application_1.id)
+    PetApplication.create(pet_id: pet_2.id, adoption_application_id: application.id)
 
     visit "/adoption_applications/#{application.id}"
 
