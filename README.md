@@ -61,7 +61,7 @@ Some of the more interesting challenges we faced included implementing the funct
 Creating the joins table for Pets and Adoption Applications (called Pet Applications) was another new challenge where we learned lessons the hard way; approving an application for a particular pet required adding a column to the Pet Application table with approval status, but initially we added it to the Adoption Applications table before realizing that approving that application would approve all pets that it was for, rather than just one as intended. 
 
 ## Challenges 
-We tried to put methods into the models and controllers following best practices, but struggled with a few helper methods which were left in the controllers. We were also left with some questions about whether our routes were RESTful and how we could make them more restful while also passing all the required data. It seems like query params might be the solve, and in one case we did utilize query params to pass data that was otherwise inaccessible. 
+We tried to put methods into the models and controllers following best practices, but struggled with a few helper methods which were left in the controllers. The helper methods that we did create in the models mainly used ruby instead of ActiveRecord so this is an area we can strive to improve in the future. We were also left with some questions about whether our routes were RESTful and how we could make them more restful while also passing all the required data. It seems like query params might be the solve, and in one case we did utilize query params to pass data that was otherwise inaccessible. 
 
 We were unable to go back and implement partials to dry out the code and eliminate uneccesary repetiton in the views because of time limitations. We also had a few other issues that, because they were not urgent, were postponed until the end if there was time and ended up being left unresolved. 
 
@@ -70,6 +70,6 @@ The most glaring of these is that pet application can't apply to more than one p
 Another issue left unresolved is the testing of autopopulated fields. We confirmed that the information appears on the local server when an edit page is displayed, but in the test it cannot detect those fields. There is still a lot to learn about testing and a lot of time was spend throughout the project determining how best to test different things (ex. check boxes, images, autopopulated forms).
 
 ## Questions for Reflection
-We agreed when we began this project that our priority was learning, and if that meant we might not pass because we spent longer learning and implementing new concepts then so be it. Now, nearing the end of the project, it appears that we are indeed unlikely to pass. Was it worth it? Did we meet our personal learning goals? How might we have structured this project differently to meet learning goals and complete all required functionality?  
+We agreed when we began this project that our priority was learning, and if that meant we might not pass because we spent longer learning and implementing new concepts then so be it. Did we meet our personal learning goals? How might we have structured this project differently to meet learning goals and complete all required functionality?  
 
 
