@@ -98,4 +98,14 @@ RSpec.describe "shelter show page" do
     expect(page).to have_no_content("What a great place!")
     expect(page).to have_no_content("We got our new puppy from Happy Puppies and they totally lived up to their name.")
   end
+
+  it "name is link to show page" do
+    shelter_1 = Shelter.create(name: "Happy Puppies", address: "55 Street St", city: "Danger Mountain", state: "UT", zip: "80304")
+
+    visit "/shelters/#{shelter_1.id}"
+
+    click_link "Happy Puppies"
+
+    expect(current_path).to eq("/shelters/#{shelter_1.id}")
+  end
 end
