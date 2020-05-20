@@ -11,14 +11,19 @@
 
 <div class="links">
 
-<% if favorite.favorite_status(@pet.id) == true %>
-  <%= button_to "Remove from Favorites", "/favorites/#{@pet.id}", method: :delete %>
-<% else %>
-  <%= button_to "Add to Favorites", "/favorites/#{@pet.id}", method: :patch %>
-<% end %>
+  <div class="button">
+    <% if favorite.favorite_status(@pet.id) == true %>
+      <%= button_to "Remove from Favorites", "/favorites/#{@pet.id}", method: :delete %>
+    <% else %>
+      <%= button_to "Add to Favorites", "/favorites/#{@pet.id}", method: :patch %>
+    <% end %>
+  </div><br>
 
-<br><%= link_to "View All Applications for #{@pet.name}", "/pets/#{@pet.id}/applications"%></br>
-<br><%= link_to "Change to #{@pet.adoption_status_text}", "/pets/#{@pet.id}/adopt", method: :patch %></br>
-<br><%= link_to "Update Pet", "/pets/#{@pet.id}/edit" %></br>
-<br><%= link_to "Delete Pet", "/pets/#{@pet.id}", method: :delete %></br></div>
+
+<div class="links">
+  <br><%= link_to "View All Applications for #{@pet.name}", "/pets/#{@pet.id}/applications"%></br>
+  <br><%= link_to "Change to #{@pet.adoption_status_text}", "/pets/#{@pet.id}/adopt", method: :patch %></br>
+  <br><%= link_to "Update Pet", "/pets/#{@pet.id}/edit" %></br>
+  <br><%= link_to "Delete Pet", "/pets/#{@pet.id}", method: :delete %></br>
+</div>
 </section>

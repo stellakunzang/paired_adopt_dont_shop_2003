@@ -8,7 +8,7 @@ RSpec.describe Favorite do
         '2' => 3
         })
 
-      expect(favorite.total_count).to eq(5)
+      expect(favorite.total_count).to eq(2)
     end
   end
 
