@@ -12,4 +12,10 @@ class Pet < ApplicationRecord
     end
   end
 
+  def approved_applicant
+    pet_applications.find do |application|
+      application.approval_status == "approved"
+    end
+  end
+
 end

@@ -14,7 +14,7 @@ class AdoptionApplication < ApplicationRecord
   end
 
   def approval_status(pet, application)
-      pet_application = PetApplication.where(adoption_application_id: application.id, pet_id: pet.id).last
-      pet_application[:approval_status]
+    pet_application = PetApplication.where(adoption_application_id: application.id, pet_id: pet.id).last
+    pet_application[:approval_status]
   end
 end
