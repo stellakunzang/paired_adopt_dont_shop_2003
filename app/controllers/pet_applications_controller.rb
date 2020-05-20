@@ -21,4 +21,12 @@ class PetApplicationsController < ApplicationController
     end
   end
 
+  def toggle_approval_status(pet_application)
+    if pet_application[:approval_status] == "unapproved"
+      "approved"
+    else
+      "unapproved"
+    end
+  end
+
 end
