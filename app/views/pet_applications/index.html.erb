@@ -1,4 +1,4 @@
-<h2>Applicants for <%= "#{@pet.name}" %></h2>
+<h2>Applicants for <%= link_to "#{@pet.name}", "/pets/#{@pet.id}" %></h2>
 <% if @applicants.empty? %>
   <%= "There are no applications for this pet yet. Add them to your favorites and apply now!" %>
 <% else %>

@@ -15,8 +15,13 @@ class PetsController < ApplicationController
   end
 
   def create
-    Pet.create(pet_params)
-    redirect_to "/shelters/#{params[:shelter_id]}/pets"
+    new_pet = Pet.new(pet_params)
+    if new_pet.save
+      redirect_to "/shelters/#{params[:shelter_id]}/pets"
+    else
+      flash[:notice] = "All fields must be completed in order to add a new pet."
+      redirect_to("/shelters/#{params[:shelter_id]}/pets/new")
+    end
   end
 
   def edit
@@ -31,6 +36,7 @@ class PetsController < ApplicationController
 
   def destroy
     Pet.destroy(params[:id])
+    favorite.contents.delete(params[:id])
     redirect_to '/pets'
   end
 
@@ -41,7 +47,7 @@ class PetsController < ApplicationController
   end
 
   private
-  
+
   def pet_params
     params.permit(:image, :name, :description, :approximate_age, :sex, :shelter_id)
   end

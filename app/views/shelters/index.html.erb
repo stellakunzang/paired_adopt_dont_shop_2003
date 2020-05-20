@@ -2,15 +2,14 @@
 <section class="index">
 <% @shelters.each do |shelter| %>
   <div class="item">
-    <div class="header"><a href="/shelters/<%= shelter.id %>"><%= shelter.name %></a></div>
+    <div class="header"><%= link_to "#{shelter.name}", "/shelters/#{shelter.id}" %></div>
     <p><%= shelter.address %></p>
     <p><%= shelter.city %>, <%= shelter.state %> <%= shelter.zip %></p><br />
     <div class = "links">
-      <a href="/shelters/<%= shelter.id %>/edit">Edit <%= shelter.name %> Information</a>
-      <br><a href="/shelters/<%= shelter.id %>" data-method="DELETE">Delete <%= shelter.name %></a></br>
+      <%= link_to "Edit #{shelter.name} Information", "/shelters/#{shelter.id}/edit" %>
+      <br><%= link_to "Delete #{shelter.name}", "/shelters/#{shelter.id}", method: :delete %></br>
     </div>
   </div>
 <% end %>
 </ section>
-<br><a href="/shelters/new">New Shelter</a></br>
-<br>
+<br><%= link_to "New Shelter", "/shelters/new" %></br>

@@ -145,4 +145,15 @@ RSpec.describe "applications show page" do
     expect(page).to have_no_content("adoption pending")
     expect(page).to have_no_content("This pet is on hold for Stella.")
   end
+
+  it "name is link to application show page" do
+    application = AdoptionApplication.create!(name: "Stella", address: "street", city: "City", state: "ST", zip: "34567", phone_number: "545-567-7643", description: "I'm awesome")
+
+    visit "/adoption_applications/#{application.id}"
+
+    click_link "Stella"
+
+    expect(current_path).to eq("/adoption_applications/#{application.id}")
+
+  end
 end

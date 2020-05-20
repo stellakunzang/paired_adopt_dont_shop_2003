@@ -1,10 +1,12 @@
-<h3><%= @shelter.name %></h3>
+
+<h3><%= link_to "#{@shelter.name}", "/shelters/#{@shelter.id}" %></h3>
 <p><%= @shelter.address %></p>
 <p><%= @shelter.city %>, <%= @shelter.state %> <%= @shelter.zip %></p>
 <br>
 
 <p>Number of pets at this shelter: <%= @shelter.pets.length %></p>
 <p>Average Review Rating: <%= @shelter.average_review_rating %>/5</p>
+<p><%= "This shelter has #{@shelter.applications} applications on file." %></p>
 
 <h2>Reviews</h2>
 <section class="index">
@@ -26,5 +28,7 @@
   <br><%= link_to "Add Review", "/shelters/#{@shelter.id}/reviews/new" %></br>
   <br><%= link_to "View Pets", "/shelters/#{@shelter.id}/pets" %></br>
   <br><%= link_to "Update Shelter", "/shelters/#{@shelter.id}/edit" %></br>
-  <br><%= link_to "Delete Shelter", "/shelters/#{@shelter.id}", method: :delete %>
+  <% if @shelter.approved_applicants == 0 %>
+    <br><%= link_to "Delete Shelter", "/shelters/#{@shelter.id}", method: :delete %></br>
+  <% end %>
 </div>

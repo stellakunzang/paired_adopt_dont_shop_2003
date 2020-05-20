@@ -25,6 +25,18 @@ RSpec.describe "shelter show page" do
     expect(page).to have_no_content("Happy Puppies")
   end
 
+  it "can remove option to delete if an application for pets at this shelter have been approved" do
+    shelter = Shelter.create(name: "Happy Puppies", address: "55 Street St", city: "Danger Mountain", state: "UT", zip: "80304")
+    pet_1 = Pet.create(image: "image.jpeg", name: "Kunga", approximate_age: "1", sex: "male", shelter_id: shelter.id)
+    application_1 = AdoptionApplication.create(name: "Stella", address: "street", city: "City", state: "ST", zip: "34567", phone_number: "545-567-7643", description: "I'm awesome")
+    PetApplication.create(pet_id: pet_1.id, adoption_application_id: application_1.id, approval_status: "approved")
+
+    visit "/shelters/#{shelter.id}"
+
+    expect(page).to have_no_content("Delete Shelter")
+  end
+
+
   it "can display link to shelter's pets page" do
     shelter_1 = Shelter.create(name: "Happy Puppies", address: "55 Street St", city: "Danger Mountain", state: "UT", zip: "80304")
 
@@ -124,19 +136,34 @@ RSpec.describe "shelter show page" do
 
     expect(page).to have_content("Number of pets at this shelter: 2")
     expect(page).to have_content("Average Review Rating: 3.5/5")
-    #
-    # # total number of applications on file for that shelter
-    # expect(page).to have_content("Total Applications: 2")
   end
+
+  it "name is link to show page" do
+    shelter_1 = Shelter.create(name: "Happy Puppies", address: "55 Street St", city: "Danger Mountain", state: "UT", zip: "80304")
+
+    visit "/shelters/#{shelter_1.id}"
+
+    click_link "Happy Puppies"
+
+    expect(current_path).to eq("/shelters/#{shelter_1.id}")
+  end
+
+  it "can display number of applications on file for shelter" do
+    shelter = Shelter.create(name: "Happy Puppies", address: "55 Street St", city: "Danger Mountain", state: "UT", zip: "80304")
+
+    pet_1 = Pet.create(image: "image.jpeg", name: "Kunga", approximate_age: "1", sex: "male", shelter_id: shelter.id)
+    pet_2 = Pet.create(image: "image.jpeg", name: "Honey Pie", approximate_age: "11", sex: "female", shelter_id: shelter.id)
+
+    application_1 = AdoptionApplication.create(name: "Stella", address: "street", city: "City", state: "ST", zip: "34567", phone_number: "545-567-7643", description: "I'm awesome")
+    application_2 = AdoptionApplication.create(name: "Stella", address: "street", city: "City", state: "ST", zip: "34567", phone_number: "545-567-7643", description: "I'm still awesome")
+
+    PetApplication.create(pet_id: pet_1.id, adoption_application_id: application_1.id)
+    PetApplication.create(pet_id: pet_2.id, adoption_application_id: application_1.id)
+    PetApplication.create(pet_id: pet_1.id, adoption_application_id: application_2.id)
+    PetApplication.create(pet_id: pet_2.id, adoption_application_id: application_2.id)
+
+    visit "/shelters/#{shelter.id}"
+
+    expect(page).to have_content("This shelter has 2 applications on file.")
+  end 
 end
-
-
-
-# User Story 30, Shelter Statistics
-#
-# As a visitor
-# When I visit a shelter's show page
-# I see statistics for that shelter, including:
-# - count of pets that are at that shelter
-# - average shelter review rating
-# - number of applications on file for that shelter
