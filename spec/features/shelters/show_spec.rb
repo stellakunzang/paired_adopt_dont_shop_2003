@@ -117,13 +117,13 @@ RSpec.describe "shelter show page" do
     shelter = Shelter.create(name: "Happy Puppies", address: "55 Street St", city: "Danger Mountain", state: "UT", zip: "80304")
     ruby = Pet.create(image:"https://lafeber.com/mammals/wp-content/uploads/rabbit-outside-px-2218452-900.jpg", name: "Ruby Tuesday", approximate_age: "12", sex: "female", shelter_id: shelter.id)
     pepper = Pet.create(image:"https://static.toiimg.com/photo/msid-67586673/67586673.jpg?3918697", name: "Sgt.Pepper", approximate_age: "11", sex: "male", shelter_id: shelter.id)
+    review_1 = ShelterReview.create!(title: "What a great place!", rating: "5", content: "We got our new puppy from Happy Puppies and they totally lived up to their name.", image: "image.jpg", shelter_id: shelter.id)
+    review_2 = ShelterReview.create!(title: "No happy campers at this place", rating: "2", content: "All the pets seemed sad.", image: "image.jpg", shelter_id: shelter.id)
 
     visit "/shelters/#{shelter.id}"
-    
-    expect(page).to have_content("Number of pets at this shelter: 2")
 
-    # # average shelter review rating
-    # expect(page).to have_content("Average Review Rating: 5/5")
+    expect(page).to have_content("Number of pets at this shelter: 2")
+    expect(page).to have_content("Average Review Rating: 3.5/5")
     #
     # # total number of applications on file for that shelter
     # expect(page).to have_content("Total Applications: 2")
