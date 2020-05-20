@@ -81,4 +81,16 @@ RSpec.describe "pet show page" do
     click_link "#{application_2.name}"
     expect(current_path).to eq("/adoption_applications/#{application_2.id}")
   end
+
+  it "can link to pet show page where name appears" do
+    shelter = Shelter.create(name: "Happy Puppies", address: "55 Street St", city: "Danger Mountain", state: "UT", zip: "80304")
+
+    pet_1 = Pet.create(image: "image.jpeg", name: "Kunga", approximate_age: "1", sex: "male", shelter_id: shelter.id)
+
+    visit "/pets/#{pet_1.id}"
+
+    click_link "Kunga"
+
+    expect(current_path).to eq("/pets/#{pet_1.id}")
+  end
 end
