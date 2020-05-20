@@ -45,6 +45,6 @@ RSpec.describe "shelter pet new page" do
     click_button "Create Pet"
 
     expect(current_path).to eq("/shelters/#{shelter_1.id}/pets/new")
-    expect(page).to have_content("All fields must be completed in order to submit an application.")
+    expect(page).to have_content("All fields must be completed in order to add a new pet.")
   end
 end
