@@ -42,14 +42,6 @@ class PetsController < ApplicationController
 
   private
 
-  def toggle_adoption_status(pet)
-    if pet.adoption_status == "adoptable"
-      "adoption pending"
-    else
-      "adoptable"
-    end
-  end
-
   def pet_params
     params.permit(:image, :name, :description, :approximate_age, :sex, :shelter_id)
   end
