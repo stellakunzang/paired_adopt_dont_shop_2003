@@ -18,6 +18,23 @@ RSpec.describe "pet show page" do
     expect(page).to have_content("Honey Pie")
   end
 
+  it "can remove from favorites if deleted" do
+    shelter_1 = Shelter.create(name: "Happy Puppies", address: "55 Street St", city: "Danger Mountain", state: "UT", zip: "80304")
+
+    pet_1 = Pet.create(image: "image.jpeg", name: "Kunga", approximate_age: "1", sex: "male", shelter_id: shelter_1.id)
+
+    visit "/pets/#{pet_1.id}"
+    expect(page).to have_content("Favorite Pets: 0")
+
+    click_button("Add to Favorites")
+
+    expect(current_path).to eq("/pets/#{pet_1.id}")
+    expect(page).to have_content("Favorite Pets: 1")
+
+    click_link "Delete Pet"
+    expect(page).to have_content("Favorite Pets: 0")
+  end
+
   it "can show pet with particular id" do
 
     shelter_1 = Shelter.create(name: "Happy Puppies", address: "55 Street St", city: "Danger Mountain", state: "UT", zip: "80304")
