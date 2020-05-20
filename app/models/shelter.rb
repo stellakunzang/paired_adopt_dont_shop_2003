@@ -8,6 +8,14 @@ class Shelter < ApplicationRecord
     pets.each do |pet|
       applications << pet.adoption_applications
     end
-    applications.flatten.uniq.count 
+    applications.flatten.uniq.count
+  end
+
+  def approved_applicants
+    approved = []
+    pets.each do |pet|
+      approved << pet.approved_applicant
+    end
+    approved.compact.length
   end
 end
