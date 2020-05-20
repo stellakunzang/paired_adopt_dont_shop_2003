@@ -9,6 +9,9 @@ class PetsController < ApplicationController
 
   def show
     @pet = Pet.find(params[:id])
+    if !params[:application_id].nil?
+      @applicant = AdoptionApplication.find(params[:application_id])
+    end
   end
 
   def create
@@ -33,17 +36,12 @@ class PetsController < ApplicationController
 
   def adopt_update
     pet = Pet.find(params[:id])
-    if pet.adoption_status == "adoptable"
-      pet.adoption_status = "adoption pending"
-    elsif pet.adoption_status == "adoption pending"
-      pet.adoption_status = "adoptable"
-    end
-    pet.update({adoption_status: pet.adoption_status})
+    pet.update({adoption_status: toggle_adoption_status(pet)})
     redirect_to "/pets/#{pet.id}"
   end
 
   private
-
+  
   def pet_params
     params.permit(:image, :name, :description, :approximate_age, :sex, :shelter_id)
   end

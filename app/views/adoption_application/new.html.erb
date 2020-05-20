@@ -1,0 +1,26 @@
+<h2>Pet Adoption Application:</h2>
+<section class="form">
+  <%= form_tag("/favorites", method: "post") do %>
+    <%= label_tag("Pets To Apply For: ") %><br>
+    <% @favorites.each do |favorite_id| %>
+      <% favorite = Pet.find(favorite_id) %>
+      <%= check_box_tag(:pets, value = favorite_id) %>
+      <%= label_tag("#{favorite.name}")%>
+    <% end %><br />
+    <%= label_tag(:name, "Name: ") %>
+    <%= text_field_tag(:name) %><br>
+    <%= label_tag(:address, "Address: ") %>
+    <%= text_field_tag(:address) %><br>
+    <%= label_tag(:city, "City: ") %>
+    <%= text_field_tag(:city ) %><br>
+    <%= label_tag(:state, "State: ") %>
+    <%= text_field_tag(:state) %><br>
+    <%= label_tag(:zip, "Zip Code: ") %>
+    <%= text_field_tag(:zip) %><br>
+    <%= label_tag(:phone_number, "Phone Number: ") %>
+    <%= text_field_tag(:phone_number) %><br>
+    <%= label_tag(:description, "Description (how are you able to provide a good home to these pets?): ") %>
+    <%= text_field_tag(:description) %><br>
+    <%= submit_tag("Submit Application") %>
+  <% end %>
+</section>

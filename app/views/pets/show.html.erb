@@ -1,10 +1,15 @@
 <section class="item">
-  <img src=<%= @pet.image %> style = "width:100%">
-  <h1><%= @pet.name %></h1>
-  <p><%= "Description: #{@pet.description}" %></p>
-  <p><%= "Age: #{@pet.approximate_age}" %></p>
-  <p><%= "Sex: #{@pet.sex}" %></p>
-  <p><%= "Adoption Status: #{@pet.adoption_status}" %></p>
+<img src=<%= @pet.image %> style = "width:100%">
+<h1><%= @pet.name %></h1>
+<p><%= "Description: #{@pet.description}" %></p>
+<p><%= "Age: #{@pet.approximate_age}" %></p>
+<p><%= "Sex: #{@pet.sex}" %></p>
+<p><%= "Adoption Status: #{@pet.adoption_status}" %></p>
+<% if !@applicant.nil? %>
+  <p><%= "This pet is on hold for #{@applicant.name}." %></p>
+<% end %>
+
+<div class="links">
 
   <div class="button">
     <% if favorite.favorite_status(@pet.id) == true %>
@@ -14,9 +19,11 @@
     <% end %>
   </div><br>
 
-  <div class="links">
-    <%= link_to "Change to #{@pet.adoption_status_text}", "/pets/#{@pet.id}/adopt", method: :patch %><br>
-    <%= link_to "Update Pet", "/pets/#{@pet.id}/edit" %><br>
-    <%= link_to "Delete Pet", "/pets/#{@pet.id}", method: :delete %>
-  </div>
+
+<div class="links">
+  <br><%= link_to "View All Applications for #{@pet.name}", "/pets/#{@pet.id}/applications"%></br>
+  <br><%= link_to "Change to #{@pet.adoption_status_text}", "/pets/#{@pet.id}/adopt", method: :patch %></br>
+  <br><%= link_to "Update Pet", "/pets/#{@pet.id}/edit" %></br>
+  <br><%= link_to "Delete Pet", "/pets/#{@pet.id}", method: :delete %></br>
+</div>
 </section>

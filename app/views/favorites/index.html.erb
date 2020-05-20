@@ -1,4 +1,5 @@
 <h1>Favorite Pets Index</h1>
+<section class="index">
 <% if !favorite.contents.empty? %>
   <%= link_to "Remove All Pets", "/favorites", method: :delete %>
 <% end %><br>
@@ -6,12 +7,28 @@
 <% if favorite.contents.empty? %>
   <p>You have not added any pets.</p>
 <% else %>
-  <% favorite.contents.keys.each do |pet_id| %>
-    <section id="pets-<%= pet_id %>">
-      <% pet = Pet.find(pet_id) %>
-      <%= link_to "#{pet.name}", "/pets/#{pet_id.to_i}"%><br>
-      <%= image_tag "#{pet.image}" %><br>
-      <%= button_to "Remove from Favorites", "/favorites/#{pet.id}", method: :delete %>
-    </section>
-  <% end %>
+  <div class ="favorites">
+    <% favorite.contents.keys.each do |pet_id| %>
+      <div class="item">
+        <section id="pets-<%= pet_id %>">
+          <% pet = Pet.find(pet_id) %>
+          <br><%= link_to "#{pet.name}", "/pets/#{pet_id.to_i}"%></br>
+          <br><%= image_tag "#{pet.image}", style: "width:75%" %></br>
+          <br><%= button_to "Remove from Favorites", "/favorites/#{pet.id}", method: :delete %></br>
+        </section>
+      </div>
+    <% end %>
+  </div>
+
+  <section class="existing_applications">
+    <h2>These pets already have applications</h2>
+      <% AdoptionApplication.pets.each do |pet| %>
+        <div class="index">
+        <br><%= link_to "#{pet.name}", "/pets/#{pet.id}"%></br>
+        </div>
+      <% end %>
+  </section>
 <% end %>
+</section>
+
+<h4><%= link_to "Apply to Adopt", "/adoption_applications/new" %></h4>
