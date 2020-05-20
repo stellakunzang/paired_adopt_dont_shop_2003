@@ -7,18 +7,17 @@ class PetApplicationsController < ApplicationController
 
   def update
     pet = Pet.find(params[:pet_id])
-    pet.update({adoption_status: "adoption pending"})
-    app_id = params[:application_id]
-    application = AdoptionApplication.find(app_id)
-    application.update({approval_status: toggle_approval_status(application)})
-    redirect_to "/pets/#{pet.id}?application_id=#{app_id}"
+    pet.update({adoption_status: toggle_adoption_status(pet)})
+    pet_application = PetApplication.where(adoption_application_id: params[:application_id], pet_id: pet.id).first
+    pet_application.update({approval_status: toggle_approval_status(pet_application)})
+    redirect_approval_status(pet_application)
   end
 
-  def toggle_approval_status(application)
-    if application.approval_status == "unapproved"
-      "approved"
+  def redirect_approval_status(pet_application)
+    if pet_application[:approval_status] == "approved"
+      redirect_to "/pets/#{pet_application.pet_id}?application_id=#{pet_application[:adoption_application_id]}"
     else
-      "unapproved"
+      redirect_to "/adoption_applications/#{pet_application[:adoption_application_id]}"
     end
   end
 
