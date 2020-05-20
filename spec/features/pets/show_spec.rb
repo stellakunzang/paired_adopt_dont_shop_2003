@@ -35,7 +35,7 @@ RSpec.describe "pet show page" do
     expect(page).to have_content("Favorite Pets: 0")
   end
 
-  it "can remove option to delete is an application for this pet has been approved" do
+  it "can remove option to delete if an application for this pet has been approved" do
     shelter = Shelter.create(name: "Happy Puppies", address: "55 Street St", city: "Danger Mountain", state: "UT", zip: "80304")
     pet_1 = Pet.create(image: "image.jpeg", name: "Kunga", approximate_age: "1", sex: "male", shelter_id: shelter.id)
     application_1 = AdoptionApplication.create(name: "Stella", address: "street", city: "City", state: "ST", zip: "34567", phone_number: "545-567-7643", description: "I'm awesome")
