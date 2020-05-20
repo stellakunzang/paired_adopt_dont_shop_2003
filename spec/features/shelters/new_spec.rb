@@ -40,8 +40,7 @@ RSpec.describe "shelter new page" do
     click_button "Create Shelter"
 
     expect(current_path).to eq("/shelters/new")
-    expect(page).to have_content("Name can't be blank")
-    expect(page).to have_content("City can't be blank")
+    expect(page).to have_content("All fields must be filled.")
   end
 end
 
