@@ -112,4 +112,27 @@ RSpec.describe "shelter show page" do
     expect(page).to_not have_content(shelter_1.name)
     expect(page).to have_content(shelter_2.name)
   end
+
+  it "can see shelter-related statistics" do
+    shelter_1 = Shelter.create(name: "Happy Puppies", address: "55 Street St", city: "Danger Mountain", state: "UT", zip: "80304")
+    # count of pets at that shelter
+    expect(page).to have_content("Total Pets: 2")
+
+    # average shelter review rating
+    expect(page).to have_content("Average Review Rating: 5/5")
+    
+    # total number of applications on file for that shelter
+    expect(page).to have_content("Total Applications: 2")
+  end
 end
+
+
+
+# User Story 30, Shelter Statistics
+#
+# As a visitor
+# When I visit a shelter's show page
+# I see statistics for that shelter, including:
+# - count of pets that are at that shelter
+# - average shelter review rating
+# - number of applications on file for that shelter
