@@ -15,7 +15,6 @@ RSpec.describe Shelter do
     it { should validate_presence_of :zip}
   end
 
-<<<<<<< HEAD
   describe "class_methods" do
     it "#applications" do
       shelter = Shelter.create(name: "Happy Puppies", address: "55 Street St", city: "Danger Mountain", state: "UT", zip: "80304")
@@ -47,7 +46,6 @@ RSpec.describe Shelter do
     end
   end
 
-=======
   describe "#average_review_rating" do
     it "returns the average review rating for a shelter" do
       shelter = Shelter.create(name: "Happy Puppies", address: "55 Street St", city: "Danger Mountain", state: "UT", zip: "80304")
@@ -57,5 +55,5 @@ RSpec.describe Shelter do
       expect(shelter.average_review_rating).to eq(3.5)
     end
   end
->>>>>>> master
+
 end
